@@ -7,21 +7,55 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E6240362119CBFC0096BA2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E6240352119CBFC0096BA2B /* GoogleService-Info.plist */; };
+		7E6240392119D1DB0096BA2B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6240382119D1DB0096BA2B /* Project.swift */; };
+		7E62403B2119D46D0096BA2B /* DataBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62403A2119D46D0096BA2B /* DataBaseService.swift */; };
+		7E62403D2119D5BD0096BA2B /* ProjectServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62403C2119D5BD0096BA2B /* ProjectServices.swift */; };
+		7E62403F211AA1100096BA2B /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62403E211AA1100096BA2B /* CenterCellCollectionViewFlowLayout.swift */; };
+		7E624041211AA1580096BA2B /* ProjectCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E624040211AA1580096BA2B /* ProjectCollectionTableViewCell.swift */; };
+		7E624043211AA3820096BA2B /* FeedSocialActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E624042211AA3820096BA2B /* FeedSocialActionTableViewCell.swift */; };
+		7E624045211AA3B80096BA2B /* FeedProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E624044211AA3B80096BA2B /* FeedProjectTableViewCell.swift */; };
+		7E624047211B18030096BA2B /* SocialActionServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E624046211B18030096BA2B /* SocialActionServices.swift */; };
+		7E624049211B18230096BA2B /* SocialAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E624048211B18230096BA2B /* SocialAction.swift */; };
+		7E62404B211B18350096BA2B /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62404A211B18350096BA2B /* Worker.swift */; };
+		7E62404D211B18470096BA2B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62404C211B18470096BA2B /* User.swift */; };
+		7E624050211B1B170096BA2B /* ImageServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E62404F211B1B170096BA2B /* ImageServices.swift */; };
+		7E624052211B20300096BA2B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E624051211B20300096BA2B /* Location.swift */; };
+		7E624054211B214B0096BA2B /* ImageDescribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E624053211B214B0096BA2B /* ImageDescribed.swift */; };
 		7E9FA73E2118926A00A7500F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9FA73D2118926A00A7500F /* AppDelegate.swift */; };
-		7E9FA7402118926A00A7500F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9FA73F2118926A00A7500F /* ViewController.swift */; };
+		7E9FA7402118926A00A7500F /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9FA73F2118926A00A7500F /* FeedViewController.swift */; };
 		7E9FA7432118926A00A7500F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9FA7412118926A00A7500F /* Main.storyboard */; };
 		7E9FA7452118926C00A7500F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9FA7442118926C00A7500F /* Assets.xcassets */; };
 		7E9FA7482118926C00A7500F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9FA7462118926C00A7500F /* LaunchScreen.storyboard */; };
+		BE2ACFE4E7F6C9A84A869E71 /* Pods_BioConstrucao.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2286185BD8A35841A561EF4 /* Pods_BioConstrucao.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A1D83C607E5E3821DABE059 /* Pods-BioConstrucao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BioConstrucao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BioConstrucao/Pods-BioConstrucao.debug.xcconfig"; sourceTree = "<group>"; };
+		7E6240352119CBFC0096BA2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7E6240382119D1DB0096BA2B /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		7E62403A2119D46D0096BA2B /* DataBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseService.swift; sourceTree = "<group>"; };
+		7E62403C2119D5BD0096BA2B /* ProjectServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectServices.swift; sourceTree = "<group>"; };
+		7E62403E211AA1100096BA2B /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		7E624040211AA1580096BA2B /* ProjectCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		7E624042211AA3820096BA2B /* FeedSocialActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSocialActionTableViewCell.swift; sourceTree = "<group>"; };
+		7E624044211AA3B80096BA2B /* FeedProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedProjectTableViewCell.swift; sourceTree = "<group>"; };
+		7E624046211B18030096BA2B /* SocialActionServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialActionServices.swift; sourceTree = "<group>"; };
+		7E624048211B18230096BA2B /* SocialAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialAction.swift; sourceTree = "<group>"; };
+		7E62404A211B18350096BA2B /* Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
+		7E62404C211B18470096BA2B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7E62404F211B1B170096BA2B /* ImageServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageServices.swift; sourceTree = "<group>"; };
+		7E624051211B20300096BA2B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		7E624053211B214B0096BA2B /* ImageDescribed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDescribed.swift; sourceTree = "<group>"; };
 		7E9FA73A2118926A00A7500F /* BioConstrucao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BioConstrucao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9FA73D2118926A00A7500F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7E9FA73F2118926A00A7500F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7E9FA73F2118926A00A7500F /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		7E9FA7422118926A00A7500F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E9FA7442118926C00A7500F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E9FA7472118926C00A7500F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E9FA7492118926C00A7500F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7D494F40A07C7F4C21278E0 /* Pods-BioConstrucao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BioConstrucao.release.xcconfig"; path = "Pods/Target Support Files/Pods-BioConstrucao/Pods-BioConstrucao.release.xcconfig"; sourceTree = "<group>"; };
+		D2286185BD8A35841A561EF4 /* Pods_BioConstrucao.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BioConstrucao.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +63,54 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE2ACFE4E7F6C9A84A869E71 /* Pods_BioConstrucao.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3CB0356DDBFA8415219621BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6A1D83C607E5E3821DABE059 /* Pods-BioConstrucao.debug.xcconfig */,
+				B7D494F40A07C7F4C21278E0 /* Pods-BioConstrucao.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7E6240372119D1D00096BA2B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E6240382119D1DB0096BA2B /* Project.swift */,
+				7E624048211B18230096BA2B /* SocialAction.swift */,
+				7E62404A211B18350096BA2B /* Worker.swift */,
+				7E62404C211B18470096BA2B /* User.swift */,
+				7E624051211B20300096BA2B /* Location.swift */,
+				7E624053211B214B0096BA2B /* ImageDescribed.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7E62404E211B1A1A0096BA2B /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				7E62403E211AA1100096BA2B /* CenterCellCollectionViewFlowLayout.swift */,
+				7E624040211AA1580096BA2B /* ProjectCollectionTableViewCell.swift */,
+				7E624042211AA3820096BA2B /* FeedSocialActionTableViewCell.swift */,
+				7E624044211AA3B80096BA2B /* FeedProjectTableViewCell.swift */,
+				7E9FA73F2118926A00A7500F /* FeedViewController.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
 		7E9FA7312118926A00A7500F = {
 			isa = PBXGroup;
 			children = (
 				7E9FA73C2118926A00A7500F /* BioConstrucao */,
 				7E9FA73B2118926A00A7500F /* Products */,
+				3CB0356DDBFA8415219621BF /* Pods */,
+				CAD53A2B667E4E1E0F8C0A85 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,7 +130,7 @@
 				7E9FA753211892B800A7500F /* Mechanism */,
 				7E9FA7512118929F00A7500F /* Presentation */,
 				7E9FA73D2118926A00A7500F /* AppDelegate.swift */,
-				7E9FA73F2118926A00A7500F /* ViewController.swift */,
+				7E6240352119CBFC0096BA2B /* GoogleService-Info.plist */,
 				7E9FA7412118926A00A7500F /* Main.storyboard */,
 				7E9FA7442118926C00A7500F /* Assets.xcassets */,
 				7E9FA7462118926C00A7500F /* LaunchScreen.storyboard */,
@@ -71,6 +142,8 @@
 		7E9FA74F2118928600A7500F /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				7E6240372119D1D00096BA2B /* Model */,
+				7E62403A2119D46D0096BA2B /* DataBaseService.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -78,6 +151,7 @@
 		7E9FA7512118929F00A7500F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				7E62404E211B1A1A0096BA2B /* Feed */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -92,8 +166,19 @@
 		7E9FA7542118931E00A7500F /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				7E62403C2119D5BD0096BA2B /* ProjectServices.swift */,
+				7E624046211B18030096BA2B /* SocialActionServices.swift */,
+				7E62404F211B1B170096BA2B /* ImageServices.swift */,
 			);
 			path = Business;
+			sourceTree = "<group>";
+		};
+		CAD53A2B667E4E1E0F8C0A85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2286185BD8A35841A561EF4 /* Pods_BioConstrucao.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -103,9 +188,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E9FA74C2118926C00A7500F /* Build configuration list for PBXNativeTarget "BioConstrucao" */;
 			buildPhases = (
+				22473CA0F2DB4B46C6D37492 /* [CP] Check Pods Manifest.lock */,
 				7E9FA7362118926A00A7500F /* Sources */,
 				7E9FA7372118926A00A7500F /* Frameworks */,
 				7E9FA7382118926A00A7500F /* Resources */,
+				10629DC7BDFE2CA8D871C049 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E9FA7482118926C00A7500F /* LaunchScreen.storyboard in Resources */,
+				7E6240362119CBFC0096BA2B /* GoogleService-Info.plist in Resources */,
 				7E9FA7452118926C00A7500F /* Assets.xcassets in Resources */,
 				7E9FA7432118926A00A7500F /* Main.storyboard in Resources */,
 			);
@@ -162,13 +250,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		10629DC7BDFE2CA8D871C049 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BioConstrucao/Pods-BioConstrucao-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BioConstrucao/Pods-BioConstrucao-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		22473CA0F2DB4B46C6D37492 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BioConstrucao-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7E9FA7362118926A00A7500F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E9FA7402118926A00A7500F /* ViewController.swift in Sources */,
+				7E62404D211B18470096BA2B /* User.swift in Sources */,
+				7E624050211B1B170096BA2B /* ImageServices.swift in Sources */,
+				7E62403D2119D5BD0096BA2B /* ProjectServices.swift in Sources */,
+				7E62404B211B18350096BA2B /* Worker.swift in Sources */,
+				7E62403F211AA1100096BA2B /* CenterCellCollectionViewFlowLayout.swift in Sources */,
+				7E9FA7402118926A00A7500F /* FeedViewController.swift in Sources */,
 				7E9FA73E2118926A00A7500F /* AppDelegate.swift in Sources */,
+				7E624054211B214B0096BA2B /* ImageDescribed.swift in Sources */,
+				7E624052211B20300096BA2B /* Location.swift in Sources */,
+				7E62403B2119D46D0096BA2B /* DataBaseService.swift in Sources */,
+				7E624043211AA3820096BA2B /* FeedSocialActionTableViewCell.swift in Sources */,
+				7E624047211B18030096BA2B /* SocialActionServices.swift in Sources */,
+				7E6240392119D1DB0096BA2B /* Project.swift in Sources */,
+				7E624045211AA3B80096BA2B /* FeedProjectTableViewCell.swift in Sources */,
+				7E624041211AA1580096BA2B /* ProjectCollectionTableViewCell.swift in Sources */,
+				7E624049211B18230096BA2B /* SocialAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +457,7 @@
 		};
 		7E9FA74D2118926C00A7500F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A1D83C607E5E3821DABE059 /* Pods-BioConstrucao.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -328,6 +476,7 @@
 		};
 		7E9FA74E2118926C00A7500F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7D494F40A07C7F4C21278E0 /* Pods-BioConstrucao.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
