@@ -1,0 +1,6 @@
+framework module Pods_BioConstrucao {
+  umbrella header "Pods-BioConstrucao-umbrella.h"
+
+  export *
+  module * { export * }
+}

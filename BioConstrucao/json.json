@@ -1,0 +1,21 @@
+{
+  "Projects" : {
+    "Project 1" : {
+    "name" : "Project 1",
+    "categories" : ["Categoria 1"],
+    "materials" : ["Material 1"],
+    "owners" : ["Owner 1"]
+    }
+  }, 
+  "Owners" : {
+    "Owner 1" : {
+      "name" : "Onwer 1"
+    }
+  }, 
+  "Social_actions" : {
+    "Social_action1" : {
+      "name" : "Social_action1",
+      "owners" : ["Owner 1"]
+    }
+  }
+}
