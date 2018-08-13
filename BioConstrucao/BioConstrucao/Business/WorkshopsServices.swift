@@ -1,5 +1,5 @@
 //
-//  SocialActionServices.swift
+//  WorkshopServices.swift
 //  BioConstrucao
 //
 //  Created by Yasmin Nogueira Spadaro Cropanisi on 08/08/2018.
@@ -7,36 +7,25 @@
 //
 
 import Foundation
-
-//
-//  SocialActionService.swift
-//  BioConstrucao
-//
-//  Created by Yasmin Nogueira Spadaro Cropanisi on 07/08/2018.
-//  Copyright © 2018 Instituto de Pesquisas Eldorado. All rights reserved.
-//
-
-import Foundation
-//import FirebaseDatabase
 import Firebase
 import FirebaseAuth
 
-@objc protocol SocialActionServicesDelegate {
-    func receiveSocialActions(socialActions: [SocialAction])
+@objc protocol WorkshopServicesDelegate {
+    func receiveWorkshops(workshops: [Workshop])
 }
 
-@objc protocol UploadSocialActionDelegate {
-    func uploadSocialActionDidFinish(_ error: Error?)
+@objc protocol UploadWorkshopDelegate {
+    func uploadWorkshopDidFinish(_ error: Error?)
 }
 
-class SocialActionServices {
-    weak var delegate: SocialActionServicesDelegate?
+class WorkshopServices {
+    weak var delegate: WorkshopServicesDelegate?
     private var dataBaseService: DataBaseService
-    private weak var uploadSocialActionDelegate: UploadSocialActionDelegate?
+    private weak var uploadWorkshopDelegate: UploadWorkshopDelegate?
     
     private var requestsCounter: Int = 0
     
-    init(delegate: SocialActionServicesDelegate) {
+    init(delegate: WorkshopServicesDelegate) {
         self.delegate = delegate
         self.dataBaseService = DataBaseService.instance
     }
@@ -45,29 +34,29 @@ class SocialActionServices {
         self.dataBaseService = DataBaseService.instance
     }
     
-    init(uploadSocialActionDelegate: UploadSocialActionDelegate) {
-        self.uploadSocialActionDelegate = uploadSocialActionDelegate
+    init(uploadWorkshopDelegate: UploadWorkshopDelegate) {
+        self.uploadWorkshopDelegate = uploadWorkshopDelegate
         self.dataBaseService = DataBaseService.instance
     }
     
-    private func instantiateSocialActionsList(socialActions: [String]?) -> [SocialAction] {
-        var socialActionsList: [SocialAction] = []
+    private func instantiateWorkshopsList(workshops: [String]?) -> [Workshop] {
+        var workshopsList: [Workshop] = []
         
-        if let socialActions = socialActions {
-            for socialAction in socialActions {
-                socialActionsList.append(SocialAction(id: socialAction))
+        if let workshops = workshops {
+            for workshop in workshops {
+                workshopsList.append(Workshop(id: workshop))
             }
         }
         
-        return socialActionsList
+        return workshopsList
     }
     
-    private func createSocialActionList(data: [String: AnyObject]?) -> [SocialAction] {
-        var result: [SocialAction] = []
+    private func createWorkshopList(data: [String: AnyObject]?) -> [Workshop] {
+        var result: [Workshop] = []
         
-        if let socialActions = data {
-            for socialAction in socialActions {
-                result.append(self.parseJsonToSocialAction(data: socialAction))
+        if let workshops = data {
+            for workshop in workshops {
+                result.append(self.parseJsonToWorkshop(data: workshop))
             }
         }
         
@@ -81,21 +70,32 @@ class SocialActionServices {
         return []
     }
     
-    func retrieveSocialActions(state: String, numberOfSocialActions: Int) {
-        var socialActionsList: [SocialAction] = []
-        var returnedSocialActionList: [SocialAction] = []
+    func retrieveWorkshops(state: String, numberOfWorkshops: Int) {
+        var workshopsList: [Workshop] = []
+        var returnedWorkshopList: [Workshop] = []
         
-        self.dataBaseService.socialActionsReference.queryOrdered(byChild: "state").queryEqual(toValue: state).queryLimited(toFirst: UInt(numberOfSocialActions)).observeSingleEvent(of: .value) { (snapshot) in
+        self.dataBaseService.workshopsReference.queryOrdered(byChild: "state").queryEqual(toValue: state).queryLimited(toFirst: UInt(numberOfWorkshops)).observeSingleEvent(of: .value) { (snapshot) in
             let data = snapshot.value as? [String: AnyObject]
-            socialActionsList = self.createSocialActionList(data: data)
+            workshopsList = self.createWorkshopList(data: data)
             
-            //            for socialAction in socialActionsList where guide.state == state {
+            //            for workshop in workshopsList where guide.state == state {
             //                returnedGuidesList.append(guide)
             //            }
             
-            self.delegate?.receiveSocialActions(socialActions: socialActionsList)
+            self.delegate?.receiveWorkshops(workshops: workshopsList)
         }
     }
+    
+    func retrieveAllWorkshops(city: String, state: String) {
+        var workshopsList: [Workshop] = []
+        self.dataBaseService.workshopsReference.queryOrdered(byChild: "state").queryEqual(toValue: state).observeSingleEvent(of: .value) { (snapshot) in
+            let data = snapshot.value as? [String: AnyObject]
+            workshopsList = self.createWorkshopList(data: data)
+            self.delegate?.receiveWorkshops(workshops: workshopsList)
+        }
+    }
+    
+    
     //    func retrieveVectorGuides(from location: String) {
     //        var guidesList: [Guide] = []
     //
@@ -336,12 +336,12 @@ class SocialActionServices {
     //    }
     
 }
-extension SocialActionServices {
-    private func setJsonSocialAction(socialAction: SocialAction, json: NSMutableDictionary) {
-        if let name = socialAction.name {
+extension WorkshopServices {
+    private func setJsonWorkshop(workshop: Workshop, json: NSMutableDictionary) {
+        if let name = workshop.name {
             json.setValue(name, forKey: "name")
         }
-        if let state = socialAction.state {
+        if let state = workshop.state {
             json.setValue(state, forKey: "state")
         }
         //        if let phone = guide.phone {
@@ -370,11 +370,11 @@ extension SocialActionServices {
         //            json.setValue(cadasturExpirationDate, forKey: "cadasturExpirationDate")
         //        }
     }
-    func createSocialActionJson(socialAction: SocialAction) -> NSMutableDictionary {
+    func createWorkshopJson(workshop: Workshop) -> NSMutableDictionary {
         let json: NSMutableDictionary = NSMutableDictionary()
         
-        setJsonSocialAction(socialAction: socialAction, json: json)
-        if let name = socialAction.name {
+        setJsonWorkshop(workshop: workshop, json: json)
+        if let name = workshop.name {
             json.setValue(name, forKey: "name")
         }
         //        if let aboutMe = guide.aboutMe {
@@ -430,12 +430,12 @@ extension SocialActionServices {
     //            }
     //        }
     //    }
-    private func setSocialActionData(socialAction: SocialAction, data: (key: String, value: AnyObject)?) {
+    private func setWorkshopData(workshop: Workshop, data: (key: String, value: AnyObject)?) {
         if let name = data?.value["name"] {
-            socialAction.name = name as? String
+            workshop.name = name as? String
         }
         if let state = data?.value["state"] {
-            socialAction.state = state as? String
+            workshop.state = state as? String
         }
         //        if let state = data?.value["state"] {
         //            guide.state = state as? String
@@ -463,10 +463,10 @@ extension SocialActionServices {
         //        }
     }
     
-    func parseJsonToSocialAction(data: (key: String, value: AnyObject)?) -> SocialAction {
-        let socialAction: SocialAction = SocialAction()
+    func parseJsonToWorkshop(data: (key: String, value: AnyObject)?) -> Workshop {
+        let workshop: Workshop = Workshop()
         
-        setSocialActionData(socialAction: socialAction, data: data)
+        setWorkshopData(workshop: workshop, data: data)
         
         //        if data?.value["tourSegments"] != nil {
         //            if let tourSegments = data?.value["tourSegments"] as? [String]? {
@@ -479,10 +479,10 @@ extension SocialActionServices {
         //            }
         //        }
         if let name = data?.value["name"] {
-            socialAction.name = name as? String
+            workshop.name = name as? String
         }
         if let state = data?.value["state"] {
-            socialAction.state = state as? String
+            workshop.state = state as? String
         }
         //        if let enabledAccount = data?.value["enabledAccount"] {
         //            guide.enabledAccount = (enabledAccount as? Bool?)!
@@ -493,7 +493,7 @@ extension SocialActionServices {
         //        if let uID = data?.value["uID"] {
         //            guide.uID = (uID as? String?)!
         //        }
-        return socialAction
+        return workshop
     }
     
     //    private func setGuideDictionaryData(guide: Guide, data: [String: AnyObject]?) {
