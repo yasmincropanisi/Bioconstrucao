@@ -150,39 +150,21 @@ class ProjectServices {
 //        }
 //    }
 //
-//    func retrieveAllGuides(city: String, state: String) {
-//        var guidesList: [Guide] = []
-//        var returnedGuidesList: [Guide] = []
-//        self.dataBaseService.guidesReference.queryOrdered(byChild: "city").queryEqual(toValue: city).observeSingleEvent(of: .value) { (snapshot) in
-//            let data = snapshot.value as? [String: AnyObject]
-//            guidesList = self.createGuideList(data: data)
-//
-//            for guide in guidesList where guide.state == state {
-//                var guideIndex = 0
-//
-//                if returnedGuidesList.count == 0 {
-//                    returnedGuidesList.append(guide)
-//                } else {
-//                    var foundPosition = false
-//
-//                    while guideIndex < returnedGuidesList.count && !foundPosition {
-//                        if returnedGuidesList[guideIndex].score! < guide.score! {
-//                            returnedGuidesList.insert(guide, at: guideIndex)
-//                            foundPosition = true
-//                        } else {
-//                            guideIndex+=1
-//                        }
-//                    }
-//
-//                    if guideIndex == returnedGuidesList.count {
-//                        returnedGuidesList.append(guide)
-//                    }
-//                }
-//            }
-//
-//            self.delegate?.receiveGuides(guides: returnedGuidesList)
-//        }
-//    }
+    func retrieveAllProjects(city: String, state: String) {
+        var projectsList: [Project] = []
+        self.dataBaseService.projectsReference.queryOrdered(byChild: "state").queryEqual(toValue: state).observeSingleEvent(of: .value) { (snapshot) in
+            let data = snapshot.value as? [String: AnyObject]
+            projectsList = self.createProjectList(data: data)
+            self.delegate?.receiveProjects(projects: projectsList)
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
 //    private func setTourGuideData(guide: (key: String, value: AnyObject), tour: Tour) {
 //        if let name = guide.value["name"] as? String {
 //            tour.guide.name = name

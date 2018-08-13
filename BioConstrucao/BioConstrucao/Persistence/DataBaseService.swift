@@ -34,7 +34,7 @@ class DataBaseService {
     let urlStorage = "https://firebasestorage.googleapis.com/v0/b/bioconstrucao-8d52d.appspot.com/o/"
     var storageReference: StorageReference?
     let projectsReference = Database.database().reference(withPath: "Projects")
-    let socialActionsReference = Database.database().reference(fromURL: "https://bioconstrucao-8d52d.firebaseio.com/Social_actions")
+    let workshopsReference = Database.database().reference(fromURL: "https://bioconstrucao-8d52d.firebaseio.com/Social_actions")
     let workerReference = Database.database().reference(fromURL: "https://bioconstrucao-8d52d.firebaseio.com/Owners")
 //    var userID: Firebase.User?
     static let instance = DataBaseService()

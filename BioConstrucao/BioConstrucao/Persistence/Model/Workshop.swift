@@ -7,11 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
-class SocialAction: NSObject {
+class Workshop: NSObject {
     var name: String?
     var id: String?
     var state: String?
+    var pathImage: String?
+    var image: UIImage?
+
     
     init(id: String) {
         self.id = id
