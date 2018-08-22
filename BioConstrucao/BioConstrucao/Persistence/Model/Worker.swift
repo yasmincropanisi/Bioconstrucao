@@ -17,6 +17,8 @@ enum Specialization: String {
 class Worker: User {
     
     var specializations: [Specialization]?
+    var projects: [Project]?
     
-   
+
+    
 }

@@ -10,9 +10,9 @@ import UIKit
 
 class WorkshopTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var workshopDescription: UILabel!
     @IBOutlet weak var workshopName: UILabel!
     @IBOutlet weak var workshopLocal: UILabel!
-    @IBOutlet weak var workshopImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,7 +28,9 @@ class WorkshopTableViewCell: UITableViewCell {
     func configureCell(workshop: Workshop) {
         
         self.workshopName.text = workshop.name
-        self.workshopName.text = workshop.state
+        self.workshopLocal.text = "\(workshop.city!) , \(workshop.state!) "
+        self.workshopDescription.text = workshop.details
+
     }
     
 }

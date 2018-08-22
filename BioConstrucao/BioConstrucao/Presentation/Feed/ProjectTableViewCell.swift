@@ -10,6 +10,7 @@ import UIKit
 
 class ProjectTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var blurImage: UIImageView!
     @IBOutlet weak var projectName: UILabel!
     @IBOutlet weak var projectImageView: UIImageView!
     override func awakeFromNib() {
