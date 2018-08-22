@@ -13,6 +13,8 @@ class Workshop: NSObject {
     var name: String?
     var id: String?
     var state: String?
+    var city: String?
+    var details: String?
     var pathImage: String?
     var image: UIImage?
 

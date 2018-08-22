@@ -17,35 +17,36 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projetos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4DK-2W-JO4">
-                    <rect key="frame" x="25" y="8" width="83.5" height="29.5"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="25"/>
+                    <rect key="frame" x="10" y="10" width="84.5" height="26.5"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="23"/>
+                    <color key="textColor" red="0.61176470589999998" green="0.36078431370000003" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGh-a7-sOE">
-                    <rect key="frame" x="288" y="8.5" width="72" height="34"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                    <rect key="frame" x="288" y="10" width="72" height="32"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                     <state key="normal" title="Ver todos">
-                        <color key="titleColor" red="0.16862745098039217" green="0.30980392156862746" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" red="0.31764705879999999" green="0.63137254899999995" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="seeAll:" destination="iN0-l3-epB" eventType="touchUpInside" id="tbW-Zb-7ws"/>
                     </connections>
                 </button>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctW-8s-h7Y" userLabel="Line">
-                    <rect key="frame" x="25" y="40.5" width="335" height="0.5"/>
-                    <color key="backgroundColor" red="0.76470588235294112" green="0.52941176470588236" blue="0.23529411764705882" alpha="0.53278409090909096" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctW-8s-h7Y" userLabel="Line">
+                    <rect key="frame" x="10" y="39.5" width="350" height="0.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="sWT-7Z-T2l"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="0.36555397727272726" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ctW-8s-h7Y" firstAttribute="top" secondItem="4DK-2W-JO4" secondAttribute="bottom" constant="3" id="0gm-ro-hVt"/>
                 <constraint firstItem="4DK-2W-JO4" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4Ys-jY-dGf"/>
                 <constraint firstItem="bGh-a7-sOE" firstAttribute="baseline" secondItem="4DK-2W-JO4" secondAttribute="baseline" id="TgK-Ef-FIV"/>
-                <constraint firstItem="4DK-2W-JO4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="W93-Jb-YED"/>
+                <constraint firstItem="4DK-2W-JO4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="W93-Jb-YED"/>
                 <constraint firstItem="ctW-8s-h7Y" firstAttribute="leading" secondItem="4DK-2W-JO4" secondAttribute="leading" id="g4V-CM-i2o"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bGh-a7-sOE" secondAttribute="trailing" constant="15" id="gMN-13-Ifx"/>
                 <constraint firstItem="ctW-8s-h7Y" firstAttribute="trailing" secondItem="bGh-a7-sOE" secondAttribute="trailing" id="pog-oF-AEV"/>

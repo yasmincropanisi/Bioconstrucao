@@ -15,9 +15,24 @@ class Project: NSObject {
     var id: String?
     var image: UIImage?
     var state: String?
+    var city: String?
     var pathImage: String?
+    var categories: [String]?
+    var workers: [Worker]?
+    var details: String?
+
+
+
+    
     init(id: String) {
         self.id = id
+    }
+    
+    init(id: String, name: String, pathImage: String, state: String) {
+        self.id = id
+        self.name = name
+        self.pathImage = pathImage
+        self.state = state
     }
     
     override init() {

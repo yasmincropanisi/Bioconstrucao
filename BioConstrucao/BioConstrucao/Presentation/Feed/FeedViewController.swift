@@ -53,20 +53,22 @@ class FeedViewController:  UIViewController, SearchResultDelegate {
         self.workshopServices.retrieveWorkshops(state: self.result.state!, numberOfWorkshops: 5)
 
         self.projectServices = ProjectServices(delegate: self)
-        self.projectServices.retrieveProjects(state: self.result.state!, numberOfProjects: 5)
+        self.projectServices.retrieveAllProjects(numberOfProjects: 5)
         
         // retira as células vazias da table view
         self.feedTableView.tableFooterView = UIView(frame: .zero)
     }
     
+  
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destiny = segue.destination as? ProjectDetailsViewController {
-//            destiny.project = self.project
-//        }
+        if let destiny = segue.destination as? ProjectViewController {
+            destiny.project = self.project
+        }
 //
 //        if let destiny = segue.destination as? WorkshopDetailsViewController {
 //            destiny.workshop = self.workshop
@@ -86,12 +88,13 @@ class FeedViewController:  UIViewController, SearchResultDelegate {
             performSegue(withIdentifier: "AllProjects", sender: self)
         } else {
             performSegue(withIdentifier: "AllWorkshops", sender: self)
-        }
+         }
     }
 }
 
 extension FeedViewController: ProjectServicesDelegate {
-    func didReceiveProjectByProjectID(project: Project) {
+    func didReceiveProjectById(project: Project) {
+        
     }
     
     func receiveProjects(projects: [Project]) {
@@ -199,8 +202,8 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     private func fillWorkshopCell(cell: FeedWorkshopTableViewCell, indexPath: IndexPath) -> FeedWorkshopTableViewCell {
         cell.nameLabel.text = workshops[indexPath.row].name
-
-        
+        cell.descriptionLabel.text = workshops[indexPath.row].details
+        cell.locationLabel.text = "Campinas, SP"
         return cell
     }
     
@@ -271,7 +274,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             if self.didGetProjectsFromDatabase {
                 if self.projects.count > 0 {
-                    return 340
+                    return 360
                 } else {
                     return 50
                 }
@@ -288,10 +291,10 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.workshops.count > 0 {
-            self.workshop = workshops[indexPath.row]
-            performSegue(withIdentifier: "SegueWorkshopDetails", sender: self)
-        }
+//        if self.workshops.count > 0 {
+//            self.workshop = workshops[indexPath.row]
+//            performSegue(withIdentifier: "SegueWorkshopDetails", sender: self)
+//        }
     }
 }
 
@@ -311,13 +314,27 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         //cell.imageProject.image = #imageLiteral(resourceName: "imagePlaceholder")
         
         cell.projectLabel.text = projects[indexPath.row].name
+        cell.projectLocationLabel.text = "\(projects[indexPath.row].city!) , \(projects[indexPath.row].state!)"
         
+        cell.projectDescriptionLabel.text = projects[indexPath.row].details
         
+    
         if let image = projects[indexPath.row].image {
-            cell.imageProject.image = image
-            cell.imageProject.isHidden = false
+            cell.imageProject.alpha = 0
+
+            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.showHideTransitionViews, animations: { () -> Void in
+                cell.imageProject.image = image
+                cell.imageProject.isHidden = false
+                cell.blurImage.isHidden = false
+                cell.imageProject.alpha = 1
+            }, completion: { (Bool) -> Void in    }
+            )
+            
+            
         } else {
             //Se tiver imagem de perfil, pega do banco
+            cell.imageProject.image = #imageLiteral(resourceName: "rectangle")
+            cell.blurImage.isHidden = true
             if let pathImage = projects[indexPath.row].pathImage {
                 let ticket = (projectsTicket, indexPath.row)
                 self.imageServices.getImageFromDatabase(path: pathImage, ticket: ticket)

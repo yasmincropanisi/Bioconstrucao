@@ -63,30 +63,33 @@ extension AllWorkshopsViewController: UITableViewDataSource {
         if let projectTableViewCell = tableView.dequeueReusableCell(withIdentifier: "WorkshopTableViewCell", for: indexPath) as? WorkshopTableViewCell {
             cell = projectTableViewCell
             cell.configureCell(workshop: workshops[indexPath.row])
-            if let image = workshops[indexPath.row].image {
-                //cell.projectImageView.isHidden = false
-                cell.workshopImageView.alpha = 0
-                UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.showHideTransitionViews, animations: { () -> Void in
-                    cell.workshopImageView.image = image
-                    cell.workshopImageView.alpha = 1
-                }, completion: { (Bool) -> Void in    }
-                )
-                
-            } else {
-                if let pathImage = workshops[indexPath.row].pathImage {
-                    let ticket = (projectString, indexPath.row)
-                    
-                    self.imageServices.getImageFromDatabase(path: pathImage, ticket: ticket)
-                    
-                    // cell.projectImageView.isHidden = true
-                    
-                }
-            }
+//            if let image = workshops[indexPath.row].image {
+//                //cell.projectImageView.isHidden = false
+//                cell.workshopImageView.alpha = 0
+//                UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.showHideTransitionViews, animations: { () -> Void in
+//                    cell.workshopImageView.image = image
+//                    cell.workshopImageView.alpha = 1
+//                }, completion: { (Bool) -> Void in    }
+//                )
+//
+//            } else {
+//                if let pathImage = workshops[indexPath.row].pathImage {
+//                    let ticket = (projectString, indexPath.row)
+//
+//                    self.imageServices.getImageFromDatabase(path: pathImage, ticket: ticket)
+//
+//                    // cell.projectImageView.isHidden = true
+//
+//                }
+//            }
         }
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 130
+    }
     
 }
 
