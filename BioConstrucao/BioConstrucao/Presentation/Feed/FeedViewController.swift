@@ -20,88 +20,81 @@ class FeedViewController:  UIViewController, SearchResultDelegate {
     var result: Location!
     var city: String!
     var state: String!
-    let projectsString = "Projetos sociais ticket"
-    var sections = ["Projetos", "Ações sociais"]
-    let socialActionsTicket: String = "Açoes sociais ticket"
-    let projectsTicket: String = "Projetos sociais ticket"
-
-
+    var sections = ["Projetos", "Oficinas"]
     
-    var socialActionServices: SocialActionServices!
-    var socialActions: [SocialAction] = []
-    var socialAction: SocialAction!
+    var workshopServices: WorkshopServices!
+    var workshops: [Workshop] = []
+    var workshop: Workshop!
     
     var projectServices: ProjectServices!
     var projects: [Project] = []
     var project: Project!
     
     private var didGetProjectsFromDatabase: Bool = false
-    private var didGetSocialActionsFromDatabase: Bool = false
+    private var didGetWorkshopsFromDatabase: Bool = false
     
     private var didCalledProjectImages: Bool = false
-    private var didCalledSocialActionsImages: Bool = false
+    private var didCalledWorkshopsImages: Bool = false
     
     var imageServices: ImageServices!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         result =  Location(state: "SP", city: "Campinas")
-        
         // titulo da nav bar
         self.city = self.result.city!
         self.state = self.result.state!
-        self.title = self.city + ", " + self.state
-        
         self.imageServices = ImageServices(delegate: self)
         
         feedTableView.delegate = self
         feedTableView.dataSource = self
-        self.socialActionServices = SocialActionServices(delegate: self)
+        self.workshopServices = WorkshopServices(delegate: self)
         
-        self.socialActionServices.retrieveSocialActions(state: self.result.state!, numberOfSocialActions: 5)
+        self.workshopServices.retrieveWorkshops(state: self.result.state!, numberOfWorkshops: 5)
 
         self.projectServices = ProjectServices(delegate: self)
-        self.projectServices.retrieveProjects(state: self.result.state!, numberOfProjects: 5)
+        self.projectServices.retrieveAllProjects(numberOfProjects: 5)
         
         // retira as células vazias da table view
         self.feedTableView.tableFooterView = UIView(frame: .zero)
     }
     
+  
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destiny = segue.destination as? ProjectDetailsViewController {
-//            destiny.project = self.project
+        if let destiny = segue.destination as? ProjectViewController {
+            destiny.project = self.project
+        }
+//
+//        if let destiny = segue.destination as? WorkshopDetailsViewController {
+//            destiny.workshop = self.workshop
 //        }
 //
-//        if let destiny = segue.destination as? SocialActionDetailsViewController {
-//            destiny.socialAction = self.socialAction
-//        }
+        if let destiny = segue.destination as? AllWorkshopsViewController {
+            destiny.location = self.result
+        }
 //
-//        if let destiny = segue.destination as? AllSocialActionsViewController {
-//            destiny.result = self.result
-//        }
-//
-//        if let destiny = segue.destination as? AllProjectsViewController {
-//            // segue vem da tela de search. logo filtra somente por Location, não por SocialAction
-//            destiny.resultLocation = self.result
-//            destiny.resultSocialAction = nil
-//        }
+        if let destiny = segue.destination as? AllProjectsViewController {
+            destiny.location = self.result
+        }
     }
     
     @objc func action(sender: UIButton!) {
         if sender.tag == 0 {
             performSegue(withIdentifier: "AllProjects", sender: self)
         } else {
-            performSegue(withIdentifier: "AllSocialActions", sender: self)
-        }
+            performSegue(withIdentifier: "AllWorkshops", sender: self)
+         }
     }
 }
 
 extension FeedViewController: ProjectServicesDelegate {
-    func didReceiveProjectByProjectID(project: Project) {
+    func didReceiveProjectById(project: Project) {
+        
     }
     
     func receiveProjects(projects: [Project]) {
@@ -111,25 +104,25 @@ extension FeedViewController: ProjectServicesDelegate {
     }
 }
 
-extension FeedViewController: SocialActionServicesDelegate {
+extension FeedViewController: WorkshopServicesDelegate {
 
     
     func imageUploadDidFinish(_ error: Error?) {
     }
     
-    func didUpdateSocialActionInDatabase(_ error: Error?) {
+    func didUpdateWorkshopInDatabase(_ error: Error?) {
     }
     
-    func didUpdateSocialActionInDatabasePending(_ error: Error?) {
+    func didUpdateWorkshopInDatabasePending(_ error: Error?) {
     }
     
-    func didCompleteAllSocialActionsData() {
+    func didCompleteAllWorkshopsData() {
         self.feedTableView.reloadData()
     }
     
-    func receiveSocialActions(socialActions: [SocialAction]) {
-        self.didGetSocialActionsFromDatabase = true
-        self.socialActions = socialActions
+    func receiveWorkshops(workshops: [Workshop]) {
+        self.didGetWorkshopsFromDatabase = true
+        self.workshops = workshops
         self.feedTableView.separatorStyle = .singleLine
         self.feedTableView.reloadData()
     }
@@ -138,7 +131,15 @@ extension FeedViewController: SocialActionServicesDelegate {
 
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var view: UIView!
+        var view: HeaderView!
+        
+        if let headerView = Bundle.main.loadNibNamed("HeaderView", owner: nil, options: nil)?.first as? HeaderView {
+            view = headerView
+        }
+        
+        view.title.text = sections[section]
+        view.seeAllButton.tag = section
+        view.delegate = self
         return view
     }
     
@@ -159,10 +160,10 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         if section == 0 {
             return 1
         } else {
-            if didGetSocialActionsFromDatabase {
-                if self.socialActions.count > 0 {
-                    if self.socialActions.count <= 5 {
-                        return socialActions.count
+            if didGetWorkshopsFromDatabase {
+                if self.workshops.count > 0 {
+                    if self.workshops.count <= 5 {
+                        return workshops.count
                     }
                     return 5
                 } else {
@@ -199,10 +200,10 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         return segments
     }
     
-    private func fillSocialActionCell(cell: FeedSocialActionTableViewCell, indexPath: IndexPath) -> FeedSocialActionTableViewCell {
-        cell.nameLabel.text = socialActions[indexPath.row].name
-
-        
+    private func fillWorkshopCell(cell: FeedWorkshopTableViewCell, indexPath: IndexPath) -> FeedWorkshopTableViewCell {
+        cell.nameLabel.text = workshops[indexPath.row].name
+        cell.descriptionLabel.text = workshops[indexPath.row].details
+        cell.locationLabel.text = "Campinas, SP"
         return cell
     }
     
@@ -231,16 +232,16 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.addSubview(activityIndicator)
             }
             return cell
-        } else { // socialActions section
-            if self.didGetSocialActionsFromDatabase {
-                if self.socialActions.count > 0 {
-                    var cell: FeedSocialActionTableViewCell!
+        } else { // workshops section
+            if self.didGetWorkshopsFromDatabase {
+                if self.workshops.count > 0 {
+                    var cell: FeedWorkshopTableViewCell!
                     
-                    if let searchResultSocialAction = tableView.dequeueReusableCell(withIdentifier: "SocialActionCell", for: indexPath) as? FeedSocialActionTableViewCell {
-                        cell = searchResultSocialAction
+                    if let searchResultWorkshop = tableView.dequeueReusableCell(withIdentifier: "WorkshopCell", for: indexPath) as? FeedWorkshopTableViewCell {
+                        cell = searchResultWorkshop
                     }
                     
-                    return fillSocialActionCell(cell: cell, indexPath: indexPath)
+                    return fillWorkshopCell(cell: cell, indexPath: indexPath)
                 } else {
                     let cell = UITableViewCell()
                     let emptyProjectLabel = createEmptyLabel()
@@ -273,7 +274,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             if self.didGetProjectsFromDatabase {
                 if self.projects.count > 0 {
-                    return 320
+                    return 360
                 } else {
                     return 50
                 }
@@ -281,7 +282,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
                 return 50
             }
         } else {
-            if self.didGetSocialActionsFromDatabase {
+            if self.didGetWorkshopsFromDatabase {
                 return 85
             } else {
                 return 30
@@ -290,10 +291,10 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.socialActions.count > 0 {
-            self.socialAction = socialActions[indexPath.row]
-            performSegue(withIdentifier: "SegueSocialActionDetails", sender: self)
-        }
+//        if self.workshops.count > 0 {
+//            self.workshop = workshops[indexPath.row]
+//            performSegue(withIdentifier: "SegueWorkshopDetails", sender: self)
+//        }
     }
 }
 
@@ -313,13 +314,27 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         //cell.imageProject.image = #imageLiteral(resourceName: "imagePlaceholder")
         
         cell.projectLabel.text = projects[indexPath.row].name
+        cell.projectLocationLabel.text = "\(projects[indexPath.row].city!) , \(projects[indexPath.row].state!)"
         
+        cell.projectDescriptionLabel.text = projects[indexPath.row].details
         
+    
         if let image = projects[indexPath.row].image {
-            cell.imageProject.image = image
-            cell.imageProject.isHidden = false
+            cell.imageProject.alpha = 0
+
+            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.showHideTransitionViews, animations: { () -> Void in
+                cell.imageProject.image = image
+                cell.imageProject.isHidden = false
+                cell.blurImage.isHidden = false
+                cell.imageProject.alpha = 1
+            }, completion: { (Bool) -> Void in    }
+            )
+            
+            
         } else {
             //Se tiver imagem de perfil, pega do banco
+            cell.imageProject.image = #imageLiteral(resourceName: "rectangle")
+            cell.blurImage.isHidden = true
             if let pathImage = projects[indexPath.row].pathImage {
                 let ticket = (projectsTicket, indexPath.row)
                 self.imageServices.getImageFromDatabase(path: pathImage, ticket: ticket)
@@ -344,15 +359,15 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension FeedViewController: ImageServicesDelegate {
     func didReceiveImage(image: UIImage?, ticket: (String, Int)) {
-        if ticket.0 == projectsString {
+        if ticket.0 == projectString {
             self.projects[ticket.1].image = image
         }
-//        } else if ticket.0 == socialActionsTicket {
-//            self.socialActions[ticket.1].image = image
-//        } else {
-//            self.projects[ticket.1].socialAction.image = image
-        
         self.feedTableView.reloadData()
     }
 }
 
+extension FeedViewController: HeaderViewDelegate {
+    func seeAllTapped(_ view: HeaderView) {
+        self.action(sender: view.seeAllButton)
+    }
+}

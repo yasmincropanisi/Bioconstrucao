@@ -13,5 +13,8 @@ class FeedProjectCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageProject: UIImageView!
     
+    @IBOutlet weak var projectLocationLabel: UILabel!
+    @IBOutlet weak var blurImage: UIImageView!
+    @IBOutlet weak var projectDescriptionLabel: UILabel!
     @IBOutlet weak var projectLabel: UILabel!
 }

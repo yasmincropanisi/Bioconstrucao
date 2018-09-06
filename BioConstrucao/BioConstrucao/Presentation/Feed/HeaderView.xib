@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HeaderView" customModule="BioConstrucao" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projetos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4DK-2W-JO4">
+                    <rect key="frame" x="10" y="10" width="84.5" height="26.5"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="23"/>
+                    <color key="textColor" red="0.61176470589999998" green="0.36078431370000003" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGh-a7-sOE">
+                    <rect key="frame" x="288" y="10" width="72" height="32"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                    <state key="normal" title="Ver todos">
+                        <color key="titleColor" red="0.31764705879999999" green="0.63137254899999995" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="seeAll:" destination="iN0-l3-epB" eventType="touchUpInside" id="tbW-Zb-7ws"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctW-8s-h7Y" userLabel="Line">
+                    <rect key="frame" x="10" y="39.5" width="350" height="0.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="sWT-7Z-T2l"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ctW-8s-h7Y" firstAttribute="top" secondItem="4DK-2W-JO4" secondAttribute="bottom" constant="3" id="0gm-ro-hVt"/>
+                <constraint firstItem="4DK-2W-JO4" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4Ys-jY-dGf"/>
+                <constraint firstItem="bGh-a7-sOE" firstAttribute="baseline" secondItem="4DK-2W-JO4" secondAttribute="baseline" id="TgK-Ef-FIV"/>
+                <constraint firstItem="4DK-2W-JO4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="W93-Jb-YED"/>
+                <constraint firstItem="ctW-8s-h7Y" firstAttribute="leading" secondItem="4DK-2W-JO4" secondAttribute="leading" id="g4V-CM-i2o"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bGh-a7-sOE" secondAttribute="trailing" constant="15" id="gMN-13-Ifx"/>
+                <constraint firstItem="ctW-8s-h7Y" firstAttribute="trailing" secondItem="bGh-a7-sOE" secondAttribute="trailing" id="pog-oF-AEV"/>
+                <constraint firstItem="bGh-a7-sOE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4DK-2W-JO4" secondAttribute="trailing" constant="5" id="uXK-rj-hYM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="seeAllButton" destination="bGh-a7-sOE" id="9Br-fv-Itl"/>
+                <outlet property="title" destination="4DK-2W-JO4" id="XKq-aQ-UjW"/>
+            </connections>
+            <point key="canvasLocation" x="46.5" y="342.5"/>
+        </view>
+    </objects>
+</document>
